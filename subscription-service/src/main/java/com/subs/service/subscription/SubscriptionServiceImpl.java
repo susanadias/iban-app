@@ -1,4 +1,4 @@
-package service_start;
+package com.subs.service.subscription;
 
 
 import java.util.List;
@@ -12,16 +12,18 @@ import org.springframework.transaction.annotation.Transactional;
 public class SubscriptionServiceImpl implements SubscriptionService {
 	
 	@Autowired
-    private SubscriptionRepository subcriptionRepository;
+    private SubscriptionRepository subscriptionRepository;
 
 	public List<Subscription> getAllSubscriptions() {
-	 return this.subcriptionRepository.findAll();
+	 return this.subscriptionRepository.findAll();
 	}
 
 	@Override
-	public Subscription createNewSubscription() {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional
+	public Subscription createNewSubscription(Subscription subscription) {
+		return subscriptionRepository.save(subscription);
 	}
+
+	
 
 }

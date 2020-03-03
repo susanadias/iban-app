@@ -1,4 +1,4 @@
-package service_start;
+package com.subs.service.subscription;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;

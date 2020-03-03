@@ -1,4 +1,4 @@
-package service_start;
+package com.subs.service.subscription;
 
 
 import java.util.List;
@@ -18,5 +18,5 @@ public interface SubscriptionService {
 	
 	List<Subscription> getAllSubscriptions();
 
-	Subscription createNewSubscription();
+	Subscription createNewSubscription(Subscription subscription);
 }
