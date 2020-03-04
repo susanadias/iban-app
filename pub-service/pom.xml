@@ -2,12 +2,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.subs.service</groupId>
-	<artifactId>subscriptionservice</artifactId>
+	<groupId>com.pub.service</groupId>
+	<artifactId>pubservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>subscription-service</name>
-	<description>Service of Subscriptions</description>
+	<name>pub-service</name>
+	<description>pub</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -33,6 +33,7 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -56,6 +57,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-rest</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
 
 		<dependency>
