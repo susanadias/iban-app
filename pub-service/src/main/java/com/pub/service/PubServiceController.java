@@ -18,12 +18,12 @@ public class PubServiceController {
 	@Autowired
 	PubServiceProxy proxyService;
 
-	@GetMapping("/pub/v1/subscriptions")
+	@GetMapping("/api/v1/subscriptions")
 	public List<SubscriptionDto> getSubscriptions() {
 		return proxyService.getSubscriptions();
 	}
 	
-	@PostMapping("pub/v1/subscriptions")
+	@PostMapping("api/v1/subscriptions")
 	public SubscriptionDto createNewSubscription(@Valid @RequestBody SubscriptionDto subscription) {
 		return proxyService.createNewSubscription(subscription);
 	}
