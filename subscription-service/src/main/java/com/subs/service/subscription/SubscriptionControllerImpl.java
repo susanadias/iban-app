@@ -17,12 +17,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.subs.service.dtos.SubscriptionDto;
 
 
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api/v1")
 public class SubscriptionControllerImpl implements SubscriptionController{
+	
+	public static final String JMS_QUEUE_EMAIL="email";
 
 	@Autowired
 	SubscriptionService subcriptionService;
@@ -31,17 +32,21 @@ public class SubscriptionControllerImpl implements SubscriptionController{
 	@Autowired
 	private JmsTemplate jmsTemplate;
 
-	@GetMapping("v1/subscriptions")
+	@GetMapping("subscriptions")
 	public List<Subscription> getAllSubscriptions() {
-		final String ola= new String();
-		jmsTemplate.convertAndSend("email", "olasasasaasss");
 		return subcriptionService.getAllSubscriptions();
 	}
 
-	@PostMapping("v1/subscriptions")
+	@PostMapping("subscriptions")
 	public ResponseEntity<Subscription> createSubscription(@Valid @RequestBody Subscription subscription) {
-		Subscription novo = subcriptionService.createNewSubscription(subscription);
-		return new ResponseEntity<Subscription>(novo, HttpStatus.OK);
+		Subscription subscriptionCreated = subcriptionService.createNewSubscription(subscription);
+		
+		if(subscriptionCreated != null) {
+			jmsTemplate.convertAndSend(JMS_QUEUE_EMAIL, subscriptionCreated.getEmailId());
+		}
+		
+		
+		return new ResponseEntity<Subscription>(subscriptionCreated, HttpStatus.OK);
 	}
 
 }

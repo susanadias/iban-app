@@ -1,10 +1,6 @@
 package email.service;
 
-import org.springframework.jms.listener.DefaultMessageListenerContainer;
-import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
-import org.springframework.jms.support.converter.MessageConverter;
-import org.springframework.jms.support.converter.MessageType;
-import org.springframework.jms.support.destination.BeanFactoryDestinationResolver;
+
 
 
 
@@ -18,6 +14,13 @@ import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.config.JmsListenerContainerFactory;
 
+
+/*
+ * Is a listener to activeMQ -listening all messages in email queue
+ * 
+ * 
+ */
+
 @SpringBootApplication
 @EnableJms
 public class EmailServiceApplication {
@@ -26,12 +29,13 @@ public class EmailServiceApplication {
 	@Bean
 	public JmsListenerContainerFactory<?> myFactory(ConnectionFactory connectionFactory,
 													DefaultJmsListenerContainerFactoryConfigurer configurer) {
+	     
+		
 		DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
 		// This provides all boot's default to this factory, including the message converter
 		
 		configurer.configure(factory, connectionFactory);
 
-		// You could still override some of Boot's default if necessary.
 		return factory;
 	}
 	
@@ -40,8 +44,6 @@ public class EmailServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EmailServiceApplication.class, args);
-		
-		
 
 	}
 

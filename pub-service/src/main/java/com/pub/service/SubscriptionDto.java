@@ -4,23 +4,20 @@ package com.pub.service;
 
 import java.io.Serializable;
 import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-import org.hibernate.annotations.CreationTimestamp;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.Data;
 
+/*
+ * Template to define the Subscription 
+ * 
+ */
 
 public class SubscriptionDto implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3691929979667909852L;
 	@JsonIgnore
     private long id;
     private String firstName;
@@ -94,4 +91,14 @@ public class SubscriptionDto implements Serializable{
     public void setEmailId(String emailId) {
         this.emailId = emailId;
     }
+
+
+	@Override
+	public String toString() {
+		return "SubscriptionDto [id=" + id + ", firstName=" + firstName + ", gender=" + gender + ", dateOfBirth="
+				+ dateOfBirth + ", consent=" + consent + ", emailId=" + emailId + "]";
+	}
+    
+    
+    
 }

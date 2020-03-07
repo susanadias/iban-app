@@ -21,7 +21,7 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomGlobalExceptionHandler.class);
 
-    @ExceptionHandler(ResourceNotFoundException.class)
+    @ExceptionHandler(SubscriptionNotFoundException.class)
     public ResponseEntity<ErrorResponse> customHandleNotFound(Exception ex, HttpServletRequest request) {
         
         LOGGER.error("Endpoint: [{}] {}", request.getMethod(), request.getRequestURI());

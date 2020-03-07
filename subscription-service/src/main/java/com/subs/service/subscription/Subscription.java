@@ -11,10 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.CreationTimestamp;
-
-import lombok.Data;
 
 @Entity
 @Table(name = "subscriptions")
@@ -33,7 +32,7 @@ public class Subscription implements Serializable{
     }
 
    
-    //Builder Pattern
+    //TODO
 
     public Subscription(long id, String firstName, String gender, Date dateOfBirth, Boolean consent, String emailId) {
 		super();
@@ -72,6 +71,7 @@ public class Subscription implements Serializable{
         this.gender = gender;
     }
     
+    @NotNull(message = "Please a date of birth")
     @Column(name = "date_of_birth", nullable = false)
     public Date getDateOfBirth() {
 		return dateOfBirth;
@@ -90,6 +90,8 @@ public class Subscription implements Serializable{
 		this.consent = consent;
 	}
 
+    @NotNull(message = "Please put a email address")
+    @Email
 	@Column(name = "email_address", nullable = false)
     public String getEmailId() {
         return emailId;
@@ -97,4 +99,13 @@ public class Subscription implements Serializable{
     public void setEmailId(String emailId) {
         this.emailId = emailId;
     }
+
+
+	@Override
+	public String toString() {
+		return "Subscription [id=" + id + ", firstName=" + firstName + ", gender=" + gender + ", dateOfBirth="
+				+ dateOfBirth + ", consent=" + consent + ", emailId=" + emailId + "]";
+	}
+	
+    
 }
