@@ -3,10 +3,12 @@ package com.subs.service.dtos;
 import java.io.Serializable;
 
 public class SubscriptionDto implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private String email;
-	
-	
 	
 	
 	public SubscriptionDto(String name, String email) {
@@ -27,6 +29,7 @@ public class SubscriptionDto implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 	
 	
 	
