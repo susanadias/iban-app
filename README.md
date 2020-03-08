@@ -8,11 +8,11 @@ Any microservice must be able to locate the different instances of another servi
 The programs used will be these:
 
 
-* **Project**: subscription-service **Port:**: 8200
+* **Project**: subscription-service **Port:**: 8001
 
 * **Project**: pub-service **Port:**: 8100
 
-* **Project**: email-service **Port:**: 8001
+* **Project**: email-service **Port:**: 8200
 
 * **Project**: eureka-service **Port:**: 8761
 
@@ -111,9 +111,11 @@ Asynchronous : Client server communication is non-blocking. Once client sent req
      - After that, you can run public service Application.java
      - Or you can go target folder and execute public-service-0.0.1-SNAPSHOT.jar
 
-This public service must be configured with a IP public, so in this case is very important have autenthication 
+This public service must be configured with a IP public, so in this case is very important have authentication:
 
-We can use, authentication with some token (spring security) and use SSL, but i don´t had time to development it.
+In this project, i didn´t time to implement the authentication, but it´s possible use spring security or OAuth2.
+
+An example of how to  development: https://dzone.com/articles/securing-rest-services-with-oauth2-in-springboot-1
 
 The goal of this public service, is consume all endpoints from the subscription service.
 
