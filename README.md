@@ -27,15 +27,26 @@ The programs used will be these:
 
 # 1 - Start the eureka-service:
 
-
 The first thing we need is to have a place where all microservices register when they are initialized. This service is the one that will be consulted when we want to locate the different instances. In this example we will use ** Eureka Server ** which is very easy to create.
 
- - After run it, please check in:
+ - How to run:
+     - You can import eureka project to your IDE.
+     - Run: mvn clean install:
+     - After that, you can run EurekaServerApplication.java
+     - Or you can go target folder and execute eureka-server-0.0.1-SNAPSHOT.jar
+
+ - After run it, please check the eureka-server is on:
 
  http://localhost:8761/
 
 
  # 2 - Start the subscription service
+ 
+ - How to run:
+     - You can import subscription project to your IDE.
+     - Run: mvn clean install:
+     - After that, you can run SubscriprionServiceApplication.java
+     - Or you can go target folder and execute subscription-service-0.0.1-SNAPSHOT.jar
 
  This service have the following endpoints:
 
@@ -48,7 +59,7 @@ The first thing we need is to have a place where all microservices register when
  - application.properties
  - subscription api, from postman
 
-The database used, is H2 (memory database, that is good only for tests)
+The database used, is H2 (memory database, that is good only for tests). 
 You need had this configuration to access database in your favorite browser:
 
 H2 database configuration 
@@ -64,12 +75,11 @@ When you start this service (execute jar or in your IDE), you can see the databa
 
 -http://localhost:8001/h2
 
-This service will be consulted by the pub-service, that is the public service.
+This subscriptionservice will be consulted by the pub-service, that is the public service.
 
 Another point, this service to send information to email-service is necessary to download the activeMQ and install it in your machine.
 
 the communication bettween subscription service and email service i used the JMS ActiveMQ.
-
 https://activemq.apache.org/
 
 After it, you can see it activeMQ is running in your machine or not in following url:
@@ -91,11 +101,19 @@ Reliable Communication : Consider a system that process client requests. In norm
 Asynchronous : Client server communication is non-blocking. Once client sent request to server it can do other operations without waiting for response. When response it received client can handle it anytime."
 
 
+
+
 # 3 - Start the public service
+
+- How to run:
+     - You can import public service project to your IDE.
+     - Run: mvn clean install:
+     - After that, you can run public service Application.java
+     - Or you can go target folder and execute public-service-0.0.1-SNAPSHOT.jar
 
 This public service must be configured with a IP public, so in this case is very important have autenthication 
 
-We can use, authentication with token (spring security),but i don´t had time to development it.
+We can use, authentication with some token (spring security) and use SSL, but i don´t had time to development it.
 
 The goal of this public service, is consume all endpoints from the subscription service.
 
@@ -120,6 +138,12 @@ BODY example:
 
 
 # 4 - Start email service:
+
+- How to run:
+     - You can import email service project to your IDE.
+     - Run: mvn clean install:
+     - After that, you can run EmailServiceApplication.java
+     - Or you can go target folder and execute email-service-0.0.1-SNAPSHOT.jar
 
 The service is responsable to receive an email from subscription service and sent the information that was created a new subscription to the user mail.
 
